@@ -1,0 +1,5 @@
+create view small as select city, length(city) from station group by city having length(city) <= (select min(length(city)) from station);
+create view big as select city, length(city) from station group by city having length(city) >= (select max(length(city)) from station);
+
+select * from small order by city ASC Limit 1;
+select * from big order by city ASC Limit 1;
